@@ -3,7 +3,7 @@ import shutil
 import os
 import typing
 import logging
-from sys import argv
+import sys
 
 
 def parser_xml(conf_name: str) -> typing.List[typing.Dict[str, str]]:
@@ -12,7 +12,7 @@ def parser_xml(conf_name: str) -> typing.List[typing.Dict[str, str]]:
     :param conf_name: name of configuration XML file
     :return: list with params of copies
     """
-    logging.info("Start of parsing")
+    # logging.info("Start of parsing")
     all_configs = []
     tree = ET.parse(conf_name)
     root = tree.getroot()
@@ -27,10 +27,10 @@ def copy_maker(source: str, file_name: str, destination: str) -> None:
     :param source: source path
     :param file_name: file for copy
     :param destination: destination copy
-    :return:
+    :return: None
     """
     shutil.copy2(source+file_name, destination)
-    logging.info(f"{file_name} copied ")
+    # logging.info(f"{file_name} copied ")
 
 
 def validation(source: str, file_name: str, destination: str) -> bool:
@@ -39,31 +39,31 @@ def validation(source: str, file_name: str, destination: str) -> bool:
     :param source: source path
     :param file_name: file for copy
     :param destination: destination copy
-    :return:
+    :return: bool
     """
     if not os.path.exists(source):
-        logging.error("Source does not exist")
+        # logging.error("Source does not exist")
         return False
     if not os.path.isfile(source+file_name):
-        logging.error("File does not exist")
+        # logging.error("File does not exist")
         return False
     if not os.path.exists(destination):
-        logging.error("Destination does not exist")
+        # logging.error("Destination does not exist")
         return False
     return True
 
 
 def main():
-    logging.basicConfig(filename="logs/logs.log", level=logging.INFO)
-    conf_name = argv[1]
+    # logging.basicConfig(filename="logs/logs.log", level=logging.INFO)
+    conf_name = sys.argv[1]
     for conf in parser_xml(conf_name):
         if validation(conf['source_path'], conf['file_name'], conf['destination_path']):
             copy_maker(conf['source_path'], conf['file_name'], conf['destination_path'])
         else:
             break
-    logging.info("Copy completed ")
+    # logging.info("Copy completed ")
 
 
-if '__name__' != '__main__':
+if '__name__' == '__main__':
     main()
 
