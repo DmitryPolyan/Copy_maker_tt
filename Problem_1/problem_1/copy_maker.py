@@ -30,7 +30,7 @@ def copy_maker(source: str, file_name: str, destination: str) -> None:
     :return: None
     """
     shutil.copy2(source+file_name, destination)
-    # logging.info(f"{file_name} copied ")
+    logging.info(f"{file_name} copied")
 
 
 def validation(source: str, file_name: str, destination: str) -> bool:
@@ -42,28 +42,28 @@ def validation(source: str, file_name: str, destination: str) -> bool:
     :return: bool
     """
     if not os.path.exists(source):
-        # logging.error("Source does not exist")
+        logging.error("Source does not exist")
         return False
     if not os.path.isfile(source+file_name):
-        # logging.error("File does not exist")
+        logging.error("File does not exist")
         return False
     if not os.path.exists(destination):
-        # logging.error("Destination does not exist")
+        logging.error("Destination does not exist")
         return False
     return True
 
 
 def main():
-    # logging.basicConfig(filename="logs/logs.log", level=logging.INFO)
+    logging.basicConfig(filename="logs/logs.log", format='%(asctime)s - %(message)s', level=logging.INFO)
     conf_name = sys.argv[1]
     for conf in parser_xml(conf_name):
         if validation(conf['source_path'], conf['file_name'], conf['destination_path']):
             copy_maker(conf['source_path'], conf['file_name'], conf['destination_path'])
         else:
             break
-    # logging.info("Copy completed ")
+    logging.info("Copy completed")
 
 
-if '__name__' == '__main__':
+if __name__ == '__main__':
     main()
 

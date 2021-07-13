@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Problem_1"
-
+version = "0.1.0"
 description = ""
 authors = ["Polyanskii Dmitrii  <dmitrystomper@gmail.com>"]
 
