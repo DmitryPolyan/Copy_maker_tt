@@ -24,7 +24,7 @@ def preparing_and_cleaning():
     random.shuffle(folder_numbers)
     temp_folder = f"tests/place_for_testing{folder_numbers[-1]}/"
     os.mkdir(temp_folder)
-    test_folders = [temp_folder + str(folder_numbers[i])+'/' for i in range(6)]
+    test_folders = [temp_folder + str(folder_numbers[i]) for i in range(6)]
     for folder in test_folders:
         os.mkdir(folder)
     for i in range(int(len(test_folders)/2)):
@@ -32,5 +32,5 @@ def preparing_and_cleaning():
             f.write(os.urandom(random.randint(5000, 2000000)))
     generation_xml(test_folders)
     yield
-    os.remove('tests/test_config.xml')
-    shutil.rmtree(temp_folder)
+    # os.remove('tests/test_config.xml')
+    # shutil.rmtree(temp_folder)

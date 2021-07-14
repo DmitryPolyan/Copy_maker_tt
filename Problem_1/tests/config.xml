@@ -1,7 +1,3 @@
 ﻿<config>
-    <file
-            source_path="/var/log/"
-            destination_path="/etc"
-            file_name="boot.log"
-    />
+<file source_path="/var/log" destination_path="/etc" file_name="boot.log"/>
 </config>

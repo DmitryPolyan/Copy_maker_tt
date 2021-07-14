@@ -50,7 +50,7 @@ def copy_maker(source: str, file_name: str, destination: str) -> None:
     :param destination: destination copy
     :return: None
     """
-    shutil.copy2(source+file_name, destination)
+    shutil.copy2(source+"/"+file_name, destination)
     logging.info(f"{file_name} copied")
 
 
@@ -62,10 +62,10 @@ def validation(source: str, file_name: str, destination: str) -> bool:
     :param destination: destination copy
     :return: bool
     """
-    if not os.path.exists(source):
+    if not os.path.exists(source+"/"):
         logging.error("Source does not exist")
         return False
-    if not os.path.isfile(source+file_name):
+    if not os.path.isfile(source+"/"+file_name):
         logging.error("File does not exist")
         return False
     if not os.path.exists(destination):

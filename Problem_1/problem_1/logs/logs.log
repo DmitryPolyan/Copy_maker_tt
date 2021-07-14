@@ -27,3 +27,23 @@ INFO:root:Copy completed
 2021-07-14 20:53:20,727 - Source does not exist
 2021-07-14 20:53:20,727 - Source does not exist
 2021-07-14 20:53:20,727 - End of work
+2021-07-14 22:06:56,958 - File does not exist
+2021-07-14 22:06:56,964 - End of work
+2021-07-14 22:08:00,101 - File does not exist
+2021-07-14 22:08:00,101 - End of work
+2021-07-14 22:10:02,366 - file_for_test.txt copied
+2021-07-14 22:10:02,366 - End of work
+2021-07-14 22:10:13,570 - file_for_test.txt copied
+2021-07-14 22:10:13,570 - End of work
+2021-07-14 22:16:42,707 - file_for_test.txt copied
+2021-07-14 22:16:42,707 - End of work
+2021-07-14 22:18:23,816 - file_for_test.txt copied
+2021-07-14 22:18:23,816 - End of work
+2021-07-14 22:19:32,601 - 0.txt copied
+2021-07-14 22:19:32,602 - 1.txt copied
+2021-07-14 22:19:32,602 - 2.txt copied
+2021-07-14 22:19:32,602 - End of work
+2021-07-14 22:20:29,306 - 0.txt copied
+2021-07-14 22:20:29,307 - 1.txt copied
+2021-07-14 22:20:29,307 - 2.txt copied
+2021-07-14 22:20:29,307 - End of work
