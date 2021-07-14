@@ -1,7 +1,4 @@
 ﻿<config>
-    <file
-            source_path="/var/log/"
-            destination_path="/etc"
-            file_name="boot.log"
-    />
+<file source_path="/var/log/" destination_path="/etc" file_name="boot.log"/>
+<file source_path="/home/e3erli/PycharmProjects/" destination_path="/home/e3erli/PycharmProjects/Veeam_technical_task/" file_name="file_for_test.txt"/>
 </config>

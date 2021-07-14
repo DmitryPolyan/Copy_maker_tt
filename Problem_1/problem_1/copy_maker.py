@@ -14,12 +14,10 @@ def parser_xml(conf_name: str) -> typing.List[typing.Dict[str, str]]:
     :return: list with params of copies
     """
     # logging.info("Start of parsing")
-    all_configs = []
     tree = ET.parse(conf_name)
     root = tree.getroot()
     for child in root:
-        all_configs.append(child.attrib)
-    return all_configs
+        yield child.attrib
 
 
 def copy_maker(source: str, file_name: str, destination: str) -> None:
