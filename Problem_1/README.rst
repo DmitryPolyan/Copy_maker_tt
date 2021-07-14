@@ -8,8 +8,8 @@ Configuration file:
 
 <config>
     <file
-            source_path="C:\Windows\system32"
-            destination_path="C:\Program files"
+            source_path="C:\\Windows\\system32"
+            destination_path="C:\\Program files"
             file_name="kernel32.dll"
     />
     <file
