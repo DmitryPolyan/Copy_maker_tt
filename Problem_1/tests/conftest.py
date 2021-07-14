@@ -32,5 +32,5 @@ def preparing_and_cleaning():
             f.write(os.urandom(random.randint(5000, 2000000)))
     generation_xml(test_folders)
     yield
-    # os.remove('tests/test_config.xml')
-    # shutil.rmtree(temp_folder)
+    os.remove('tests/test_config.xml')
+    shutil.rmtree(temp_folder)
