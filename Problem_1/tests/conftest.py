@@ -2,13 +2,17 @@ import xml.etree.ElementTree as ET
 import pytest
 import os
 import random
+import shutil
 
 
 def generation_xml(test_folders):
     top = ET.Element('config')
+    work_dir = os.path.abspath(os.curdir)+'/'
     for i in range(int(len(test_folders)/2)):
         child = ET.SubElement(top, 'file')
-        child.attrib = {'source_path': test_folders[i], "destination_path": test_folders[i+3], "file_name": f"{i}.txt"}
+        child.attrib = {'source_path': work_dir + test_folders[i],
+                        "destination_path": work_dir + test_folders[i+3],
+                        "file_name": f"{i}.txt"}
     my_data = ET.tostring(top)
     with open('tests/test_config.xml', "wb") as f:
         f.write(my_data)
@@ -20,7 +24,7 @@ def preparing_and_cleaning():
     random.shuffle(folder_numbers)
     temp_folder = f"tests/place_for_testing{folder_numbers[-1]}/"
     os.mkdir(temp_folder)
-    test_folders = [temp_folder + str(folder_numbers[i]) for i in range(6)]
+    test_folders = [temp_folder + str(folder_numbers[i])+'/' for i in range(6)]
     for folder in test_folders:
         os.mkdir(folder)
     for i in range(int(len(test_folders)/2)):
@@ -28,6 +32,5 @@ def preparing_and_cleaning():
             f.write(os.urandom(random.randint(5000, 2000000)))
     generation_xml(test_folders)
     yield
-    for folder in test_folders:
-        os.rmdir(folder)
-    os.rmdir(temp_folder)
+    os.remove('tests/test_config.xml')
+    shutil.rmtree(temp_folder)

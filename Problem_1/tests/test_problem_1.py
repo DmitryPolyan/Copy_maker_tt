@@ -20,6 +20,10 @@ def test_validation():
 
 
 def test_main(preparing_and_cleaning):
-    assert os.path.isfile('/etc/boot.log') is False
-    with mock.patch("sys.argv", return_value=[None, 'tests/config.xml']):
+    all_work = [i for i in cm.parser_xml('tests/test_config.xml')]
+    for i in all_work:
+        assert os.path.isfile(i['destination_path'] + i['file_name']) is False
+    with mock.patch("problem_1.copy_maker.get_config_file", return_value='tests/test_config.xml'):
         cm.main()
+    for i in all_work:
+        assert os.path.isfile(i['destination_path'] + i['file_name']) is True

@@ -79,9 +79,7 @@ def main():
     for conf in parser_xml(get_config_file()):
         if validation(conf['source_path'], conf['file_name'], conf['destination_path']):
             copy_maker(conf['source_path'], conf['file_name'], conf['destination_path'])
-        else:
-            break
-    logging.info("Copy completed")
+    logging.info("End of work")
 
 
 if __name__ == '__main__':
