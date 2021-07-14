@@ -4,10 +4,10 @@ from unittest import mock
 
 
 def test_parser_xml():
-    result = cm.parser_xml('tests/config.xml')
-    assert isinstance(result, list)
-    assert len(result) == 1
-    assert {'source_path': '/var/log/', 'destination_path': '/etc', 'file_name': 'boot.log'} == result[0]
+    result = next(cm.parser_xml('tests/config.xml'))
+    assert isinstance(result, dict)
+    assert len(result) == 3
+    assert {'source_path': '/var/log/', 'destination_path': '/etc', 'file_name': 'boot.log'} == result
 
 
 def test_validation():
