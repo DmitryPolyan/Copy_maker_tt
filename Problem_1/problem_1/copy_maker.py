@@ -4,6 +4,7 @@ import os
 import typing
 import logging
 import sys
+import argparse
 
 
 def parser_xml(conf_name: str) -> typing.List[typing.Dict[str, str]]:
@@ -53,10 +54,31 @@ def validation(source: str, file_name: str, destination: str) -> bool:
     return True
 
 
+def get_config_file() -> str:
+    """
+    Getting the name of the configuration file from the command line.
+    :return: file name
+    """
+    def check_file(file_name: str) -> str:
+        """Checking a file for availability and support """
+        if not os.path.isfile(file_name):
+            raise argparse.ArgumentTypeError("File does not exist")
+        elif file_name[-4:] != ".xml":
+            raise argparse.ArgumentTypeError("Unsupported file format ")
+        return file_name
+
+    parser = argparse.ArgumentParser(
+        description="The utility copies files according to the provided configuration file.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
+    parser.add_argument("configuration", type=check_file, help="configuration file (XML)")
+    args = parser.parse_args()
+    return args.configuration
+
+
 def main():
     logging.basicConfig(filename="logs/logs.log", format='%(asctime)s - %(message)s', level=logging.INFO)
-    conf_name = sys.argv[1]
-    for conf in parser_xml(conf_name):
+    for conf in parser_xml(get_config_file()):
         if validation(conf['source_path'], conf['file_name'], conf['destination_path']):
             copy_maker(conf['source_path'], conf['file_name'], conf['destination_path'])
         else:

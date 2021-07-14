@@ -1,11 +1,12 @@
-INFO:root:Start of parsing
-INFO:root:Start of parsing
-INFO:root:Start of parsing
-INFO:root:Start of parsing
-INFO:root:file_for_test.txt copied 
-INFO:root:Copy completed 
-INFO:root:Start of parsing
-INFO:root:Start of parsing
 INFO:root:boot.log copied 
 INFO:root:Copy completed 
-INFO:root:Start of parsing
+2021-07-13 22:10:21,123 - boot.log copied 
+2021-07-13 22:10:21,123 - Copy completed 
+2021-07-13 22:10:51,241 - boot.log copied 
+2021-07-13 22:10:51,241 - Copy completed 
+2021-07-14 11:01:43,028 - boot.log copied
+2021-07-14 11:01:43,029 - Copy completed
+2021-07-14 11:07:29,807 - boot.log copied
+2021-07-14 11:07:29,807 - Copy completed
+2021-07-14 11:52:53,886 - boot.log copied
+2021-07-14 11:52:53,886 - Copy completed
