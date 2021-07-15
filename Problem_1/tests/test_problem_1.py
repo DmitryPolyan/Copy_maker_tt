@@ -1,6 +1,7 @@
 import problem_1.copy_maker as cm
 import os
 from unittest import mock
+import platform
 
 
 def test_parser_xml():
@@ -11,12 +12,20 @@ def test_parser_xml():
 
 
 def test_validation():
-    assert cm.validation('/var/log', 'boot.log', '/etc') is True
-    assert cm.validation('/var/xlogx', 'boot.log', '/etc') == os.path.exists('/var/xlogx/')
-    assert cm.validation('/var/log', 'boot.log', '/1etc1') == os.path.exists('/1etc1')
-    source = '/var/log/'
-    file_name = 'boot.log123'
-    assert cm.validation(source, file_name, '/etc') == os.path.isfile(source+file_name)
+    if platform.system() == "Linux":
+        assert cm.validation('/var/log', 'boot.log', '/etc') is True
+        assert cm.validation('/var/xlogx', 'boot.log', '/etc') == os.path.exists('/var/xlogx/')
+        assert cm.validation('/var/log', 'boot.log', '/1etc1') == os.path.exists('/1etc1')
+        assert cm.validation('/var/log', 'boot.log123', '/etc') == os.path.isfile('/var/log' + 'boot.log123')
+
+    elif platform.system() == "Windows":
+        assert cm.validation(r"C:\Windows\system32", "kernel32.dll", r"C:\Program files") is True
+        assert cm.validation(r"C:\Windows\system42", "kernel32.dll", r"C:\Program files") == os.path.exists(
+            r"C:\Windows\system42")
+        assert cm.validation(r"C:\Windows\system32", "kernel32.dll", r"C:\Program1 files") == os.path.exists(
+            r"C:\Program1 files")
+        assert cm.validation(r"C:\Windows\system32", "kernel52.dll", r"C:\Program files") == os.path.isfile(
+            r"C:\Windows\system32" + "kernel52.dll")
 
 
 def test_main(preparing_and_cleaning):
