@@ -3,7 +3,6 @@ import shutil
 import os
 import typing
 import logging
-import sys
 import argparse
 
 

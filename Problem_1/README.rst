@@ -1,3 +1,20 @@
+Usage example:
+
+.../Problem_1/problem_1$ (sudo) python copy_maker.py config.xml
+
+for help:
+
+.../Problem_1/problem_1$ (sudo) python copy_maker.py -h
+
+for running pytest:
+
+.../Problem_1$ pytest
+
+logs are saved in a folder:
+
+.../Problem_1/problem_1/logs
+
+
 Problem 1
 Implement a problem that copies files according to the provided configuration file. Configuration file must be in XML
 format. Each entry in the configuration file should contain file name, source path and destination path parameters.

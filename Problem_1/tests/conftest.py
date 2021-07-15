@@ -5,7 +5,12 @@ import random
 import shutil
 
 
-def generation_xml(test_folders):
+def generation_xml(test_folders: list) -> None:
+    """
+    Generation of configuration file for testing.
+    Create temp XML config file in folder "tests"
+    :param test_folders: list of temp folders
+    """
     top = ET.Element('config')
     work_dir = os.path.abspath(os.curdir)+'/'
     for i in range(int(len(test_folders)/2)):
@@ -22,11 +27,13 @@ def generation_xml(test_folders):
 def preparing_and_cleaning():
     folder_numbers = list(range(100))
     random.shuffle(folder_numbers)
+    # Create folders for testing
     temp_folder = f"tests/place_for_testing{folder_numbers[-1]}/"
     os.mkdir(temp_folder)
     test_folders = [temp_folder + str(folder_numbers[i]) for i in range(6)]
     for folder in test_folders:
         os.mkdir(folder)
+    # Create files for testing
     for i in range(int(len(test_folders)/2)):
         with open(f"{test_folders[i]}/{i}.txt", "wb") as f:
             f.write(os.urandom(random.randint(5000, 2000000)))
