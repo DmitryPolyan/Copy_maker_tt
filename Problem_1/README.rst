@@ -1,10 +1,10 @@
 Usage example:
 
-.../Problem_1/problem_1$ (sudo) python copy_maker.py config.xml
+.../Problem_1/problem_1$ python copy_maker.py config.xml
 
 for help:
 
-.../Problem_1/problem_1$ (sudo) python copy_maker.py -h
+.../Problem_1/problem_1$ python copy_maker.py -h
 
 for running pytest:
 
