@@ -34,7 +34,7 @@ def parser_xml(conf_name: str) -> typing.List[typing.Dict[str, str]]:
     :param conf_name: name of configuration XML file
     :return: list with params of copies
     """
-    # logging.info("Start of parsing")
+    logging.info("Start of parsing")
     tree = ET.parse(conf_name)
     root = tree.getroot()
     for child in root:
